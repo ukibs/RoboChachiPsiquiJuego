@@ -1,14 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboChachiPsiquiJuego", "Assembly-CSharp.csproj", "{A698CEDB-8D10-5BEA-8B27-E374FF802AE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{A698CEDB-8D10-5BEA-8B27-E374FF802AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A698CEDB-8D10-5BEA-8B27-E374FF802AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A698CEDB-8D10-5BEA-8B27-E374FF802AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A698CEDB-8D10-5BEA-8B27-E374FF802AE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
