@@ -42,6 +42,7 @@ public class ControlWithMouse : MonoBehaviour {
 			//Aquí lo movemos, si se tiene que mover
 			transform.Translate (0.0f, 0.0f, actualSpeed * Time.deltaTime);
 			//Aquí lo vamos rotando
+			direction = (placeToGo - transform.position).normalized;
 			Vector3 currentForward = transform.forward;
 			Vector3 newForward = Vector3.Slerp(currentForward, direction, Time.deltaTime * 5f);
 			transform.forward = newForward;
@@ -76,13 +77,6 @@ public class ControlWithMouse : MonoBehaviour {
 					else
 						interactable = null;
 				}
-
-				//eAToReach = 
-				//transform.LookAt (placeToGo);
-				direction = (placeToGo - transform.position).normalized;
-
-				//Correct inclination
-				//transform.eulerAngles = new Vector3 (0.0f, transform.eulerAngles.y, 0.0f);
 			}
 		}
 	}
