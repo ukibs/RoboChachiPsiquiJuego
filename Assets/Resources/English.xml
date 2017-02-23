@@ -1,0 +1,20 @@
+<MAIN>
+	<OBJECTS>
+		<OBJECT name="Test">
+			<texto> It's an object </texto>
+			<texto> It serves for something </texto>
+		</OBJECT>	
+		<OBJECT name="Test2">
+			<texto> Another object </texto>
+			<texto> These should work </texto>
+		</OBJECT>
+		<OBJECT name="Door Panel">
+			<texto> It opens the door </texto>
+			<texto> Opening the door </texto>
+		</OBJECT>
+		<OBJECT name="Room Door">
+			<texto> My room's door </texto>
+			<texto> Doesn´t work this way </texto>
+		</OBJECT>
+	</OBJECTS>
+</MAIN>
