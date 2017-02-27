@@ -14,8 +14,8 @@ public /*abstract*/ class InteractableWithAction : InteractableObject {
 		
 	}
 
-	protected virtual void Interact(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
+	public override bool Use(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
 		Debug.Log (description[1]);
-		//Debug.Log ("You've used it");
+		return true;
 	}
 }

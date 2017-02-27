@@ -10,18 +10,22 @@ public class ControlWithMouse : MonoBehaviour {
 	private bool still = false;
 	private Vector3 placeToGo, direction;
 	private GameObject interactable;
+
 	private Quaternion toRotation;
+	private string[] textToUse;
 
 	// Use this for initialization
 	void Start () {
 		placeToGo = transform.position;
 		actualSpeed = 0f;
+		textToUse = new string[10];			//Provisional
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		bool click = Input.GetMouseButtonDown (0);
-		CheckClick (click);
+		bool lClick = Input.GetMouseButtonDown (0);	//Boton izquierdo
+		bool rClick = Input.GetMouseButtonDown (1);	//Boton izquierdo
+		CheckClick (lClick);
 
 		//Hasta que este lo bastante cerca intenrara llegar
 		//Comprobamos still por si le detiene algún evento
@@ -33,8 +37,11 @@ public class ControlWithMouse : MonoBehaviour {
 		}
 		//Cuando se detiene porque ha llegado, si hay un objeto almacenado
 		else if (interactable) {
-			still = true;								//Lo detenemos para que 
-			interactable.SendMessage ("Interact");
+			InteractableObject interactableScript = interactable.GetComponent<InteractableObject> ();
+			bool succes = interactableScript.Use ();
+			if (succes) {
+				still = true;								//Lo detenemos para que 
+			}
 			interactable = null;
 		}
 		//Para que no se esté ejecutando cuando no haga falta
@@ -74,6 +81,7 @@ public class ControlWithMouse : MonoBehaviour {
 					placeToGo = hit.point;
 					if (hit.transform.tag == "Interactable")
 						interactable = hit.transform.gameObject;
+						
 					else
 						interactable = null;
 				}

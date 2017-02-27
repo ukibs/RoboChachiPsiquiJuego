@@ -16,8 +16,10 @@ public class DoorOpener : InteractableWithAction {
 		
 	}
 
-	protected override void Interact(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
-		objectiveDoor.SendMessage("Activate");
-		Debug.Log("Interacting");
+	public override bool Use(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
+		//objectiveDoor.SendMessage("Activate");
+		Door doorScript = objectiveDoor.GetComponent<Door> ();
+		doorScript.Activate ();
+		return true;
 	}
 }

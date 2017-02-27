@@ -40,8 +40,14 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 	}
 
 	//Interaccion de prueba
-	protected virtual void Interact(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
+	public virtual bool Examinate(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
 		Debug.Log (description[0]);
+		return true;
+	}
+	//
+	public virtual bool Use(){
+		Debug.Log ("This cannot be used");
+		return false;
 	}
 
 	//
@@ -49,7 +55,7 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		rend = GetComponent<Renderer>();
 		startcolor = rend.material.color;
 		player = GameObject.Find("Player");
-		description = new string[10];
+		description = new string[10];			//Provisional
 	}
 
 	protected void GetText(){
