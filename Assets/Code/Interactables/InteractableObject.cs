@@ -39,6 +39,11 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		rend.material.color = startcolor;
 	}
 
+	//
+	void OnMouseDown(){
+
+	}
+
 	//Interaccion de prueba
 	public virtual bool Examinate(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
 		Debug.Log (description[0]);
