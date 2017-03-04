@@ -12,6 +12,7 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 	private Renderer rend;
 	private GameObject player;
 
+
 	private XmlDocument xml_d;
 	private XmlReader xml_r;
 	protected string[] description;
@@ -39,15 +40,10 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		rend.material.color = startcolor;
 	}
 
-	//
-	void OnMouseDown(){
-
-	}
-
 	//Interaccion de prueba
-	public virtual bool Examinate(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
+	public virtual string[] Examinate(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
 		Debug.Log (description[0]);
-		return true;
+		return description;
 	}
 	//
 	public virtual bool Use(){
@@ -61,8 +57,10 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		startcolor = rend.material.color;
 		player = GameObject.Find("Player");
 		description = new string[10];			//Provisional
+		//canvas = GameObject.Find("Canvas");					No funciona con inactivos
 	}
 
+	//
 	protected void GetText(){
 		XmlNode objectToUse;
 		XmlNodeList xmlDescription;

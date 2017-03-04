@@ -50,6 +50,7 @@
      <Compile Include="Assets\Code\ControlWithMouse.cs" />
      <Compile Include="Assets\Code\Interactables\InteractableObject.cs" />
      <Compile Include="Assets\Code\Interactables\InteractableWithAction.cs" />
+     <Compile Include="Assets\Code\Interactables\InteractionIcon.cs" />
      <Compile Include="Assets\Code\Interactables\ParticularOnes\Door.cs" />
      <Compile Include="Assets\Code\Interactables\ParticularOnes\DoorOpener.cs" />
      <None Include="Assets\Resources\English.xml" />
