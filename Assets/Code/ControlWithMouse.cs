@@ -16,6 +16,7 @@ public class ControlWithMouse : MonoBehaviour {
 	 */ 
 	private string status = "normal";
 	private int actionToDo = 0;
+	private Animator modelAnimator;
 
 	private float actualSpeed;
 	private Vector3 placeToGo, direction;
@@ -37,6 +38,9 @@ public class ControlWithMouse : MonoBehaviour {
 		for (int i = 0; i < interactionZones.Length; i++) {
 			interactionZones [i] = new Rect (100 * i, 100 * i, 100, 100);
 		}
+		//
+		Transform child = transform.GetChild(0);
+		modelAnimator = child.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -52,9 +56,11 @@ public class ControlWithMouse : MonoBehaviour {
 		//Comprobamos still por si le detiene algún evento
 		if (Vector3.Distance (placeToGo, transform.position) >= 1.5f && actualSpeed < maxSpeed) {
 			actualSpeed += 0.2f;
+			modelAnimator.SetFloat ("Speed", actualSpeed);
 		}	
 		else if(actualSpeed > 0.0f){
 			actualSpeed -= 0.2f;
+			modelAnimator.SetFloat ("Speed", actualSpeed);
 		}
 		//Cuando se detiene porque ha llegado, si hay un objeto almacenado
 		else if (interactable && status == "normal") {
