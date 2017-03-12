@@ -6,6 +6,7 @@ public class ControlWithMouse : MonoBehaviour {
 
 	public float maxSpeed = 5.0f;
 	public Texture[] interactionIcons;
+	public float defaultInteractionDistance = 1.5f;
 
 
 	/*
@@ -27,6 +28,7 @@ public class ControlWithMouse : MonoBehaviour {
 	private int textCounter = 0;
 
 	private Rect[] interactionZones;
+	private float distanceToInteract;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +43,8 @@ public class ControlWithMouse : MonoBehaviour {
 		//
 		Transform child = transform.GetChild(0);
 		modelAnimator = child.GetComponent<Animator> ();
+		//
+		distanceToInteract = defaultInteractionDistance;
 	}
 	
 	// Update is called once per frame
@@ -53,8 +57,11 @@ public class ControlWithMouse : MonoBehaviour {
 			CheckClickUp ();
 
 		//Hasta que este lo bastante cerca intenrara llegar
-		//Comprobamos still por si le detiene algún evento
-		if (Vector3.Distance (placeToGo, transform.position) >= 1.5f && actualSpeed < maxSpeed) {
+			//Sacamos la posicion ignorando la altura para comparar
+		Vector2 horizontalPosition = new Vector2(transform.position.x, transform.position.z);
+		Vector2 horizontalPlaceToGo = new Vector2 (placeToGo.x, placeToGo.z);
+		if (Vector2.Distance (horizontalPlaceToGo, horizontalPosition) >= distanceToInteract 
+			&& actualSpeed < maxSpeed) {
 			actualSpeed += 0.2f;
 			modelAnimator.SetFloat ("Speed", actualSpeed);
 		}	
@@ -84,14 +91,15 @@ public class ControlWithMouse : MonoBehaviour {
 		if (actualSpeed > 0.0f) {
 			//Aquí lo movemos, si se tiene que mover
 			transform.Translate (0.0f, 0.0f, actualSpeed * Time.deltaTime);
-			//Aquí lo vamos rotando
-			direction = (placeToGo - transform.position).normalized;
-			Vector3 currentForward = transform.forward;
-			Vector3 newForward = Vector3.Slerp(currentForward, direction, Time.deltaTime * 5f);
-			transform.forward = newForward;
-				//Correct inclination
-			transform.eulerAngles = new Vector3 (0.0f, transform.eulerAngles.y, 0.0f);
 		}
+		//Aquí lo vamos rotando
+		direction = (placeToGo - transform.position).normalized;
+		Vector3 currentForward = transform.forward;
+		Vector3 newForward = Vector3.Slerp(currentForward, direction, Time.deltaTime * 5f);
+		transform.forward = newForward;
+			//Correct inclination
+		transform.eulerAngles = new Vector3 (0.0f, transform.eulerAngles.y, 0.0f);
+		
 	}
 
 	//Para iconos de accion
@@ -109,11 +117,6 @@ public class ControlWithMouse : MonoBehaviour {
 	void OnDrawGizmos() {
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawSphere(placeToGo, 1);
-	}
-
-	//
-	public void SetInteractable(GameObject newInteractable){
-		interactable = newInteractable;
 	}
 
 	//
@@ -155,6 +158,7 @@ public class ControlWithMouse : MonoBehaviour {
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit)) {
 				placeToGo = hit.point;		//Para decidir a donde ir
+				distanceToInteract = defaultInteractionDistance;
 			}
 			break;
 		case "selecting":
@@ -163,6 +167,8 @@ public class ControlWithMouse : MonoBehaviour {
 				if (interactionZones [i].Contains (Input.mousePosition)) {
 					actionToDo = i + 1;
 					placeToGo = interactable.transform.position;
+					InteractableObject interactableScript = interactable.GetComponent<InteractableObject> ();
+					distanceToInteract = interactableScript.GetDistanceToInteract ();
 				}
 			}
 			status = "normal";

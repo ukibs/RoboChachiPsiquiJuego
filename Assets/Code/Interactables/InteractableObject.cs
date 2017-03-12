@@ -8,6 +8,9 @@ using System.IO;
 
 public /*abstract*/ class InteractableObject : MonoBehaviour {
 
+	[XmlAttribute("name")] public string name;						//Para editarlo en el editor
+	public float distanceToInteract = 1.5f;
+
 	private Color startcolor;
 	private Renderer rend;
 	private GameObject player;
@@ -17,17 +20,12 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 	private XmlReader xml_r;
 	protected string[] description;
 
-	[XmlAttribute("name")] public string name;						//Para editarlo en el editor
+
 
 	// Use this for initialization
 	void Start () {
 		InitializeObject ();	//Para que inicialicen los hijos
 		GetText ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	//Que destque cuando le pongamos el ratón encima
@@ -42,13 +40,18 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 
 	//Interaccion de prueba
 	public virtual string[] Examinate(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
-		Debug.Log (description[0]);
+		//Debug.Log (description[0]);
 		return description;
 	}
 	//
 	public virtual bool Use(){
 		Debug.Log ("This cannot be used");
 		return false;
+	}
+
+	//
+	public float GetDistanceToInteract(){
+		return distanceToInteract;
 	}
 
 	//
