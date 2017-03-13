@@ -59,7 +59,6 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		rend = GetComponent<Renderer>();
 		startcolor = rend.material.color;
 		player = GameObject.Find("Player");
-		description = new string[10];			//Provisional
 		//canvas = GameObject.Find("Canvas");					No funciona con inactivos
 	}
 
@@ -79,6 +78,7 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		//Vigilando también casos de texto vacio
 		if (objectToUse != null) {
 			xmlDescription = ((XmlElement)objectToUse).GetElementsByTagName ("texto");
+			description = new string[xmlDescription.Count];
 			int j = 0;
 			foreach (XmlNode node in xmlDescription) {
 				description [j] = node.InnerText;

@@ -53,8 +53,7 @@ public class ControlWithMouse : MonoBehaviour {
 		bool lClickUp = Input.GetMouseButtonUp(0);			//Boton izquierdo arriba
 		if(lClickDown)
 			CheckClickDown ();
-		if (lClickUp)
-			CheckClickUp ();
+		
 
 		//Hasta que este lo bastante cerca intenrara llegar
 			//Sacamos la posicion ignorando la altura para comparar
@@ -105,8 +104,11 @@ public class ControlWithMouse : MonoBehaviour {
 	//Para iconos de accion
 	void OnGUI(){
 		if (status == "selecting") {
-			GUI.DrawTexture (interactionZones [0], interactionIcons [0], ScaleMode.ScaleToFit, true);
-			GUI.DrawTexture (interactionZones [1], interactionIcons [1], ScaleMode.ScaleToFit, true);
+			//Lo hacemos asi porque se descuadra en y
+			GUI.DrawTexture (new Rect(interactionZones[0].x, 0, interactionZones[0].width, interactionZones[0].height), 
+				interactionIcons [0], ScaleMode.ScaleToFit, true);
+			GUI.DrawTexture (new Rect(interactionZones[1].x, 0, interactionZones[1].width, interactionZones[1].height), 
+				interactionIcons [1], ScaleMode.ScaleToFit, true);
 		}
 		if (status == "talking") {
 			GUI.Label(new Rect(Screen.height*4/5, Screen.width*1/5, 500, 100), textToUse[textCounter]);
@@ -137,6 +139,8 @@ public class ControlWithMouse : MonoBehaviour {
 				}
 				else {
 					interactable = null;
+					placeToGo = hit.point;		//Para decidir a donde ir
+					distanceToInteract = defaultInteractionDistance;
 				}
 			}
 			break;
@@ -145,21 +149,6 @@ public class ControlWithMouse : MonoBehaviour {
 				textCounter++;
 			else
 				status = "normal";
-			break;
-		}
-	}
-
-	//
-	void CheckClickUp(){
-		//
-		switch(status){
-		case "normal":
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
-			if (Physics.Raycast (ray, out hit)) {
-				placeToGo = hit.point;		//Para decidir a donde ir
-				distanceToInteract = defaultInteractionDistance;
-			}
 			break;
 		case "selecting":
 			actionToDo = 0;
