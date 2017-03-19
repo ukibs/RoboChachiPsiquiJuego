@@ -18,6 +18,7 @@ public class ControlWithMouse : MonoBehaviour {
 	private string status = "normal";
 	private int actionToDo = 0;
 	private Animator modelAnimator;
+	private Rigidbody rb;
 
 	private float actualSpeed;
 	private Vector3 placeToGo, direction;
@@ -29,9 +30,11 @@ public class ControlWithMouse : MonoBehaviour {
 
 	private Rect[] interactionZones;
 	private float distanceToInteract;
+	private AudioSource cannotUseSound;
 
 	// Use this for initialization
 	void Start () {
+		rb = gameObject.GetComponent<Rigidbody> ();
 		placeToGo = transform.position;
 		actualSpeed = 0f;
 		//textToUse = new string[10];			//Provisional
@@ -45,6 +48,8 @@ public class ControlWithMouse : MonoBehaviour {
 		modelAnimator = child.GetComponent<Animator> ();
 		//
 		distanceToInteract = defaultInteractionDistance;
+
+		cannotUseSound = gameObject.GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -81,15 +86,17 @@ public class ControlWithMouse : MonoBehaviour {
 				bool succes = interactableScript.Use ();
 				if (!succes) {
 					//Aquí pondermos ruidito de negación o algo
+					cannotUseSound.Play();
 				}
 				break;
 			}
 			interactable = null;
 		}
 		//Para que no se esté ejecutando cuando no haga falta
-		if (actualSpeed > 0.0f) {
+		//if (actualSpeed > 0.0f) {
+		if(actualSpeed != rb.velocity.z){
 			//Aquí lo movemos, si se tiene que mover
-			transform.Translate (0.0f, 0.0f, actualSpeed * Time.deltaTime);
+			rb.velocity = transform.forward * actualSpeed;
 		}
 		//Aquí lo vamos rotando
 		direction = (placeToGo - transform.position).normalized;
