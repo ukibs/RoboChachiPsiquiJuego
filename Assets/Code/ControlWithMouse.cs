@@ -56,8 +56,8 @@ public class ControlWithMouse : MonoBehaviour {
 	void Update () {
 		bool lClickDown = Input.GetMouseButtonDown (0);		//Boton izquierdo abajo
 		bool lClickUp = Input.GetMouseButtonUp(0);			//Boton izquierdo arriba
-		if(lClickDown)
-			CheckClickDown ();
+		if(lClickUp)
+			CheckClick ();
 		
 
 		//Hasta que este lo bastante cerca intenrara llegar
@@ -112,10 +112,13 @@ public class ControlWithMouse : MonoBehaviour {
 	void OnGUI(){
 		if (status == "selecting") {
 			//Lo hacemos asi porque se descuadra en y
-			GUI.DrawTexture (new Rect(interactionZones[0].x, 0, interactionZones[0].width, interactionZones[0].height), 
+			GUI.DrawTexture (new Rect(interactionZones[0].x, Screen.height - interactionZones[0].y - interactionZones[0].height, 
+				interactionZones[0].width, interactionZones[0].height), 
 				interactionIcons [0], ScaleMode.ScaleToFit, true);
-			GUI.DrawTexture (new Rect(interactionZones[1].x, 0, interactionZones[1].width, interactionZones[1].height), 
+			GUI.DrawTexture (new Rect(interactionZones[1].x, Screen.height - interactionZones[1].y - interactionZones[1].height, 
+				interactionZones[1].width, interactionZones[1].height), 
 				interactionIcons [1], ScaleMode.ScaleToFit, true);
+
 		}
 		if (status == "talking") {
 			GUI.Label(new Rect(Screen.height*4/5, Screen.width*1/5, 500, 100), textToUse[textCounter]);
@@ -129,7 +132,7 @@ public class ControlWithMouse : MonoBehaviour {
 	}
 
 	//
-	void CheckClickDown(){
+	void CheckClick(){
 		//CLicando lo mandamos a un sitio
 		switch(status){
 		case "normal":
@@ -139,8 +142,8 @@ public class ControlWithMouse : MonoBehaviour {
 				if (hit.transform.tag == "Interactable") {
 					interactable = hit.transform.gameObject;
 
-					interactionZones [0] = new Rect (Input.mousePosition.x-100, Input.mousePosition.y-20, 100, 100);
-					interactionZones [1] = new Rect (Input.mousePosition.x+100, Input.mousePosition.y-20, 100, 100);
+					interactionZones [0] = new Rect (Input.mousePosition.x-150, Input.mousePosition.y-20, 100, 100);
+					interactionZones [1] = new Rect (Input.mousePosition.x+50, Input.mousePosition.y-20, 100, 100);
 					
 					status = "selecting";
 				}
