@@ -67,11 +67,11 @@ public class ControlWithMouse : MonoBehaviour {
 		if (Vector2.Distance (horizontalPlaceToGo, horizontalPosition) >= distanceToInteract 
 			&& actualSpeed < maxSpeed) {
 			actualSpeed += 0.2f;
-			modelAnimator.SetFloat ("Speed", actualSpeed);
+			modelAnimator.SetFloat ("Speed", actualSpeed/maxSpeed);
 		}	
 		else if(actualSpeed > 0.0f){
 			actualSpeed -= 0.2f;
-			modelAnimator.SetFloat ("Speed", actualSpeed);
+			modelAnimator.SetFloat ("Speed", actualSpeed/maxSpeed);
 		}
 		//Cuando se detiene porque ha llegado, si hay un objeto almacenado
 		else if (interactable && status == "normal") {
