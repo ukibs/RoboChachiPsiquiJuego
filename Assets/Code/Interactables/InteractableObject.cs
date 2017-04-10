@@ -25,17 +25,17 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		InitializeObject ();	//Para que inicialicen los hijos
-		GetText ();
+		GetTextXML ();
 	}
 
 	//Que destque cuando le pongamos el ratón encima
 	void OnMouseEnter(){
-		rend.material.color = Color.yellow;
+		//rend.material.color = Color.yellow;
 	}
 
 	//
 	void OnMouseExit(){
-		rend.material.color = startcolor;
+		//rend.material.color = startcolor;
 	}
 
 	//Interaccion de prueba
@@ -43,10 +43,16 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 		//Debug.Log (description[0]);
 		return description;
 	}
+
 	//
 	public virtual bool Use(){
 		Debug.Log ("This cannot be used");
 		return false;
+	}
+
+	//
+	public virtual string[] Talk(){
+		return null;
 	}
 
 	//
@@ -56,14 +62,15 @@ public /*abstract*/ class InteractableObject : MonoBehaviour {
 
 	//
 	protected virtual void InitializeObject(){
-		rend = GetComponent<Renderer>();
-		startcolor = rend.material.color;
+		
+		//rend = GetComponent<Renderer>();
+		//startcolor = rend.material.color;
 		player = GameObject.Find("Player");
 		//canvas = GameObject.Find("Canvas");					No funciona con inactivos
 	}
 
 	//
-	protected void GetText(){
+	protected void GetTextXML(){
 		XmlNode objectToUse;
 		XmlNodeList xmlDescription;
 		TextAsset textasset = (TextAsset)Resources.Load("English", typeof(TextAsset));

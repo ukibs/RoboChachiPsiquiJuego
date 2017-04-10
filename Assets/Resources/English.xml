@@ -12,5 +12,19 @@
 			<texto> My bed </texto>
 			<texto> I should make it </texto>
 		</OBJECT>
+		<OBJECT name="Painter">
+			<texto> The painter </texto>
+			<texto> An angry old bastard </texto>
+		</OBJECT>
+		<OBJECT name="Paint Cube">
+			<texto> A cube full of paint </texto>
+			<texto> It would be a shame if someone throwed it </texto>
+		</OBJECT>
 	</OBJECTS>
+	<CONVERSATIONS>
+		<CONVERSATION name="Painter">
+			<texto> Ey you! </texto>
+			<texto> Don´t touch the paint! </texto>
+		</CONVERSATION>
+	</CONVERSATIONS>
 </MAIN>
