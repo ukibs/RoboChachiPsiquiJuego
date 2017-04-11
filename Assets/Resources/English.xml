@@ -27,4 +27,11 @@
 			<texto> Don´t touch the paint! </texto>
 		</CONVERSATION>
 	</CONVERSATIONS>
+	<EVENTS>
+		<EVENT name="Event1">
+			<texto> What the...? </texto>
+			<texto> ARE YOU MAD!? </texto>
+			<texto> Let me help you </texto>
+		</EVENT>
+	</EVENTS>
 </MAIN>

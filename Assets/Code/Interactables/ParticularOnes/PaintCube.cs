@@ -12,6 +12,7 @@ public class PaintCube : InteractableObject {
 	#endregion
 	
 	#region Private Attributes
+	private Vector3 originalPosition;
 	private bool triggered = false;
 	private float count = 0.0f;
 	private GameObject fallingPaint;
@@ -20,6 +21,11 @@ public class PaintCube : InteractableObject {
 	#endregion
 	
 	#region MonoDevelop Methods
+	/*void Start () {
+		InitializeObject ();	//Para que inicialicen los hijos
+		GetTextXML ();
+	}*/
+
 	void Update(){
 		if (triggered) {
 			count += Time.deltaTime;
@@ -28,8 +34,10 @@ public class PaintCube : InteractableObject {
 				//Creamos pegote en el suelo
 				//Aquí activaremos el evento
 				//playerScript.UnsetEventStatus();		//Este lo quitamos cuando esté hecho el evento
-				Instantiate(event1, transform.position, Quaternion.identity);
+				//Instantiate(event1, transform.position, Quaternion.identity);
+				event1.SendMessage("StartEvent");
 				triggered = false;
+				transform.position = originalPosition;
 				//Aquí lo volvemos a dejar en el suelo
 			}
 		}
@@ -39,6 +47,7 @@ public class PaintCube : InteractableObject {
 	#region User Methods
 	public override bool Use(){			//Igual lo hacemos pubico para mejorar la interaccion con el personaje
 		//objectiveDoor.SendMessage("Activate");
+		originalPosition = transform.position;
 		player = GameObject.Find("Player");
 		playerScript = player.GetComponent<ControlWithMouse> ();
 		playerScript.SetEventStatus ();

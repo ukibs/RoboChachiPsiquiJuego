@@ -49,7 +49,9 @@
      <Compile Include="Assets\Code\Camera\CameraTrigger.cs" />
      <Compile Include="Assets\Code\Camera\PlayerFollower.cs" />
      <Compile Include="Assets\Code\ControlWithMouse.cs" />
+     <Compile Include="Assets\Code\Effects\FadeInOut.cs" />
      <Compile Include="Assets\Code\Effects\FlowingPainting.cs" />
+     <Compile Include="Assets\Code\Effects\Looker.cs" />
      <Compile Include="Assets\Code\Events\Event1.cs" />
      <Compile Include="Assets\Code\Interactables\InteractableObject.cs" />
      <Compile Include="Assets\Code\Interactables\ParticularOnes\Door.cs" />

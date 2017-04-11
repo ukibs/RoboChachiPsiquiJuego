@@ -78,8 +78,9 @@ public class ControlWithMouse : MonoBehaviour {
 		
 	}
 
-	//Para iconos de accion
+	//
 	void OnGUI(){
+		//Para iconos de accion
 		if (status == State.Selecting) {
 			//Lo hacemos asi porque se descuadra en y
 			GUI.DrawTexture (new Rect(interactionZones[0].x, Screen.height - interactionZones[0].y - interactionZones[0].height, 
@@ -89,7 +90,7 @@ public class ControlWithMouse : MonoBehaviour {
 				interactionZones[1].width, interactionZones[1].height), 
 				interactionIcons [1], ScaleMode.ScaleToFit, true);
 
-		}
+		}	//Text
 		else if (status == State.Examining) {
 			GUI.Label(new Rect(Screen.width*1/5, Screen.height*4/5, 500, 100), textToUse[textCounter]);
 		}
