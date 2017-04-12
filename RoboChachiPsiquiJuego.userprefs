@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\Effects\FadeInOut.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\Interactables\ParticularOnes\PaintCube.cs">
     <Files>
-      <File FileName="Assets\Code\ControlWithMouse.cs" Line="95" Column="4" />
-      <File FileName="Assets\Code\Interactables\InteractableObject.cs" Line="26" Column="2" />
-      <File FileName="Assets\Code\Interactables\TalkableCharacter.cs" Line="4" Column="1" />
-      <File FileName="Assets\Code\Interactables\ParticularOnes\PaintCube.cs" Line="27" Column="5" />
-      <File FileName="Assets\Code\Events\Event1.cs" Line="105" Column="6" />
+      <File FileName="Assets\Code\ControlWithMouse.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Interactables\InteractableObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Interactables\TalkableCharacter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Interactables\ParticularOnes\PaintCube.cs" Line="10" Column="32" />
+      <File FileName="Assets\Code\Events\Event1.cs" Line="12" Column="21" />
       <File FileName="Assets\Code\Effects\FadeInOut.cs" Line="46" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>

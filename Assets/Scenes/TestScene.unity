@@ -386,7 +386,10 @@ MonoBehaviour:
   distanceToInteract: 1.5
   positionOverThePlayer: {x: 0, y: 2, z: 0}
   timePainting: 2
+  paintMaterial: {fileID: 2100000, guid: 5a2466ab1a11eb345933c19bb0021316, type: 2}
   fallingPaintPrefab: {fileID: 1818904094691508, guid: 41b01c2e5bacb4347a3dd3668a43c646,
+    type: 2}
+  paintStainPrefab: {fileID: 1090445024644654, guid: 4f264d481c1812844a0dfbc2de6dae98,
     type: 2}
   event1: {fileID: 379164097}
 --- !u!1 &318173906
@@ -1411,12 +1414,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114835469935845988, guid: 3a7dfb9e368cce7499bdaec28b776baa,
-        type: 2}
-      propertyPath: ragdollPlayer
-      value: 
-      objectReference: {fileID: 1250935828537194, guid: f4aad12f4b58cf243a8fac00aee0b436,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a7dfb9e368cce7499bdaec28b776baa, type: 2}
   m_IsPrefabParent: 0

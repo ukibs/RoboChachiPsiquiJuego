@@ -81,6 +81,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Event1
+  paintMaterial: {fileID: 2100000, guid: 5a2466ab1a11eb345933c19bb0021316, type: 2}
   securityBotPrefab: {fileID: 1784451632845304, guid: 57e8fb081b8f6274e9f22502f2ed9fb1,
     type: 2}
   securityBotSpamPoint: {fileID: 4544411293831210}
+  ragdollPlayer: {fileID: 1250935828537194, guid: f4aad12f4b58cf243a8fac00aee0b436,
+    type: 2}

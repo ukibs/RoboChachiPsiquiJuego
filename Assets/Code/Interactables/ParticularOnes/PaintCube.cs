@@ -7,7 +7,9 @@ public class PaintCube : InteractableObject {
 	#region Public Attributes
 	public Vector3 positionOverThePlayer = new Vector3(0.0f, 2.0f, 0.0f);
 	public float timePainting = 2.0f;
+	public Material paintMaterial;
 	public GameObject fallingPaintPrefab;
+	public GameObject paintStainPrefab;
 	public GameObject event1;
 	#endregion
 	
@@ -53,6 +55,8 @@ public class PaintCube : InteractableObject {
 		playerScript.SetEventStatus ();
 		transform.position = player.transform.position + positionOverThePlayer;
 		fallingPaint = Instantiate (fallingPaintPrefab, player.transform.position, Quaternion.identity);
+		Vector3 stainPostion = new Vector3 (0.0f, -0.9f, 0.0f);
+		Instantiate (paintStainPrefab, player.transform.position + stainPostion, Quaternion.identity);
 		triggered = true;
 		return true;
 	}
