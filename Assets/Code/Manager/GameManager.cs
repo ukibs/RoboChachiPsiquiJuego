@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	#endregion
 	
 	#region Private Attributes
+	private int step = 0;			//General progress in the game
 	#endregion
 	
 	#region MonoDevelop Methods
@@ -30,8 +31,15 @@ public class GameManager : MonoBehaviour {
 		
 	}
 	#endregion
-	
+
 	#region User Methods
-	
+	//
+	public int GetStep(){
+		return step;
+	}
+	//
+	public void AdvanceStep(){
+		step++;
+	}
 	#endregion
 }

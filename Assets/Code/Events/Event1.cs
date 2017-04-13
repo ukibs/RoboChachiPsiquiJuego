@@ -113,6 +113,9 @@ public class Event1 : MonoBehaviour {
 			FadeInOut fadeInOutScript = fadeInOut.GetComponent<FadeInOut> ();
 			if (fadeInOutScript.GetAlpha () >= 1.0f) {
 				SceneManager.LoadSceneAsync ("TestScene", LoadSceneMode.Single);
+				GameObject gameManager = GameObject.Find ("GameManager");
+				GameManager gmScript = gameManager.GetComponent<GameManager> ();
+				gmScript.AdvanceStep ();
 			}
 			break;
 		}

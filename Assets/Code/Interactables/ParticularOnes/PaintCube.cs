@@ -23,6 +23,15 @@ public class PaintCube : InteractableObject {
 	#endregion
 	
 	#region MonoDevelop Methods
+
+	void Awake(){
+		GameObject gameManager = GameObject.Find ("GameManager");
+		GameManager gmScript = gameManager.GetComponent<GameManager> ();
+		if (gmScript.GetStep() >= 1) {
+			Destroy (gameObject);
+		}
+	}
+
 	/*void Start () {
 		InitializeObject ();	//Para que inicialicen los hijos
 		GetTextXML ();
