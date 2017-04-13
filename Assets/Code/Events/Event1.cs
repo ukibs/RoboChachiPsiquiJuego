@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Collections;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Event1 : MonoBehaviour {
 	
@@ -30,6 +31,8 @@ public class Event1 : MonoBehaviour {
 
 	private GameObject securityBot;
 	private CharacterController securityBotRB;
+
+	private GameObject fadeInOut;
 	#endregion
 	
 	#region MonoDevelop Methods
@@ -41,6 +44,7 @@ public class Event1 : MonoBehaviour {
 		painter = GameObject.Find ("Painter");
 
 		GetEventTextXML ();
+		fadeInOut = GameObject.Find ("FadeInOut");
 	}
 	
 	// Update is called once per frame
@@ -101,10 +105,15 @@ public class Event1 : MonoBehaviour {
 			step++;
 			break;
 		case 6:
-			GameObject fadeInOut = GameObject.Find ("FadeInOut");
-			//FadeInOut fadeInOutScript = fadeInOut.GetComponent<FadeInOut> ();
 			fadeInOut.SendMessage ("Switch");
 			step++;
+
+			break;
+		case 7:
+			FadeInOut fadeInOutScript = fadeInOut.GetComponent<FadeInOut> ();
+			if (fadeInOutScript.GetAlpha () >= 1.0f) {
+				SceneManager.LoadSceneAsync ("TestScene", LoadSceneMode.Single);
+			}
 			break;
 		}
 	}

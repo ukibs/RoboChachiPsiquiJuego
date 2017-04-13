@@ -58,6 +58,7 @@
      <Compile Include="Assets\Code\Interactables\ParticularOnes\DoorOpener.cs" />
      <Compile Include="Assets\Code\Interactables\ParticularOnes\PaintCube.cs" />
      <Compile Include="Assets\Code\Interactables\TalkableCharacter.cs" />
+     <Compile Include="Assets\Code\Manager\GameManager.cs" />
      <None Include="Assets\Resources\English.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -62,5 +62,10 @@ public class FadeInOut : MonoBehaviour {
 	public void Switch(){
 		fadeDir *= -1;
 	}
+
+	//
+	public float GetAlpha(){
+		return alpha;
+	}
 	#endregion
 }
