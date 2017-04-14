@@ -2181,8 +2181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   interactionIcons:
-  - {fileID: 2800000, guid: 6c50a3fb6bc8ff347b032fd918536e34, type: 3}
-  - {fileID: 2800000, guid: 4f812bf777084f14ca39a4239735d3c1, type: 3}
+  - {fileID: 2800000, guid: 16269c088edbca3458c85dd56e48e245, type: 3}
+  - {fileID: 2800000, guid: e34758f5021e0e34f8ed7f895b8d1f08, type: 3}
+  - {fileID: 2800000, guid: ada3ea0a0d4973f43b4b471baca018f1, type: 3}
   defaultInteractionDistance: 1.5
 --- !u!23 &2037273414
 MeshRenderer:
